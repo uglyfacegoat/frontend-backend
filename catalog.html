@@ -33,6 +33,25 @@
         <h1 class="section-title" id="catalog-title">Каталог товаров</h1>
         <p class="section-description">Выберите товар по категории и цене. Все цены демонстрационные.</p>
         <div class="catalog-layout">
+          <aside class="catalog-filters" aria-labelledby="filters-title">
+            <h2 class="catalog-filters-title" id="filters-title">Фильтры</h2>
+            <form class="filters-form" id="filters-form" action="#" method="get">
+              <fieldset class="filters-form-group"><legend class="filters-form-legend">Категория</legend>
+                <label class="filters-form-check"><input name="category" value="paper" type="checkbox"> Бумага и хранение</label>
+                <label class="filters-form-check"><input name="category" value="writing" type="checkbox"> Для письма</label>
+                <p class="filters-form-hint">Без выбора — все товары.</p>
+              </fieldset>
+              <fieldset class="filters-form-group"><legend class="filters-form-legend">Цена, ₽</legend>
+                <label class="filters-form-label" for="price-from">От</label>
+                <input class="filters-form-input" id="price-from" name="price-from" type="number" min="0" step="1" placeholder="0">
+                <label class="filters-form-label" for="price-to">До</label>
+                <input class="filters-form-input" id="price-to" name="price-to" type="number" min="0" step="1" placeholder="150">
+              </fieldset>
+              <p class="filters-form-error" id="filters-error" role="alert" hidden></p>
+              <button class="button button-primary" type="submit">Применить</button>
+              <button class="button button-secondary" type="reset">Сбросить</button>
+            </form>
+          </aside>
           <section class="catalog-products" aria-labelledby="services-title">
             <h2 class="catalog-products-title" id="services-title">Список товаров</h2>
             <p class="catalog-products-count" id="results-count" role="status">Найдено товаров: 4</p>

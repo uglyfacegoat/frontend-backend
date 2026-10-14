@@ -79,3 +79,49 @@ orderForm.addEventListener('submit', (event) => {
   dialog.close();
   submitButton.disabled = false;
 });
+
+const filtersForm = document.querySelector('#filters-form');
+if (filtersForm) {
+  const cards = [...document.querySelectorAll('#catalog-grid .product-card')];
+  const priceFrom = filtersForm.elements.namedItem('price-from');
+  const priceTo = filtersForm.elements.namedItem('price-to');
+  const filtersError = document.querySelector('#filters-error');
+
+  function applyFilters() {
+    const categories = [...filtersForm.querySelectorAll('[name="category"]:checked')].map((field) => field.value);
+    const min = priceFrom.value === '' ? 0 : Number(priceFrom.value);
+    const max = priceTo.value === '' ? Infinity : Number(priceTo.value);
+    let count = 0;
+    cards.forEach((card) => {
+      const price = Number(card.dataset.price);
+      const visible = (!categories.length || categories.includes(card.dataset.category)) && price >= min && price <= max;
+      card.hidden = !visible;
+      if (visible) count += 1;
+    });
+    document.querySelector('#results-count').textContent = `Найдено товаров: ${count}`;
+    document.querySelector('#catalog-empty').hidden = count > 0;
+  }
+
+  filtersForm.addEventListener('input', () => {
+    priceTo.setCustomValidity('');
+    filtersError.hidden = true;
+  });
+  filtersForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    priceTo.setCustomValidity('');
+    if (priceFrom.value !== '' && priceTo.value !== '' && Number(priceFrom.value) > Number(priceTo.value)) {
+      priceTo.setCustomValidity('Верхняя граница цены должна быть не меньше нижней.');
+      filtersError.textContent = 'Цена «До» должна быть не меньше цены «От».';
+      filtersError.hidden = false;
+      filtersForm.reportValidity();
+      return;
+    }
+    if (filtersForm.reportValidity()) applyFilters();
+  });
+  filtersForm.addEventListener('reset', () => {
+    priceTo.setCustomValidity('');
+    filtersError.hidden = true;
+    // Значения сбрасываются стандартным действием после события reset.
+    setTimeout(applyFilters, 0);
+  });
+}
