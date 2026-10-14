@@ -1,74 +1,157 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4 правила вёрстки</title>
-    <link
-      rel="stylesheet"
-      href="https://code.s3.yandex.net/web-code/fonts/fonts.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="overlay">
-        <h1 class="header-title">Четыре правила вёрстки</h1>
-      </div>
-    </header>
-    <section class="content">
-      <div class="card">
-        <img
-          class="card-image"
-          src="https://code.s3.yandex.net/web-code/images/freetrack/04/card-1.jpg"
-          alt="Неоновые лампочки в виде символов светятся красным"
-        />
-        <h3 class="card-title">Пустота</h3>
-        <p class="card-text">
-          Простое правило, которое часто нарушают: ставить рядом элементы с
-          похожим смыслом и окружать их пустым пространством. Пустота — мощное
-          средство воздействия.
-        </p>
-      </div>
-      <div class="card no-right-margin">
-        <img
-          class="card-image"
-          src="https://code.s3.yandex.net/web-code/images/freetrack/04/card-2.jpg"
-          alt="Разметка теннисного корта крупным планом"
-        />
-        <h3 class="card-title">Сетка</h3>
-        <p class="card-text">
-          Размеры элементов и расстояния между ними укладываются в гармоничную
-          схему — её называют сеткой. Если элемент выпадает, зритель может это
-          заметить.
-        </p>
-      </div>
-      <div class="card">
-        <img
-          class="card-image"
-          src="https://code.s3.yandex.net/web-code/images/freetrack/04/card-3.jpg"
-        />
-        <h3 class="card-title">Шрифты</h3>
-        <p class="card-text">
-          Не больше трёх шрифтов на сайт. Один для заголовков, второй — для всех
-          остальных текстов, третий — для выделения важных слов. Должно хватить.
-        </p>
-      </div>
-      <div class="card no-right-margin">
-        <img
-          class="card-image"
-          src="https://code.s3.yandex.net/web-code/images/freetrack/04/card-4.jpg"
-        />
-        <h3 class="card-title">Цвета</h3>
-        <p class="card-text">
-          Обычно на сайте два цвета: ведущий и акцентный. Подобрать удачную
-          цветовую пару можно за счёт насмотренности или специальных
-          инструментов.
-        </p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Учебный магазин канцтоваров: тетради, папки, ручки и карандаши.">
+  <title>Канцтовары — учебный магазин</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="site-header-logo" href="index.html">Канцтовары<span class="site-header-caption">учебный магазин</span></a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav-list">
+          <li class="site-nav-item"><a class="site-nav-link" href="index.html" aria-current="page">Главная</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="#advantages">О магазине</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="#popular">Товары</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="#contacts">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main" id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-content">
+        <p class="hero-eyebrow">Учебный магазин</p>
+        <h1 class="hero-title" id="hero-title">Канцтовары для учёбы</h1>
+        <p class="hero-description">Тетради, ручки и другие простые вещи для занятий.</p>
+        <a class="button button-primary" href="catalog.html">Открыть каталог</a>
       </div>
     </section>
-    <footer class="footer">
-      <h4 class="footer-author">Я х Мирэа</h4>
-    </footer>
-  </body>
+    <div class="container">
+      <section class="section" id="popular" aria-labelledby="popular-title">
+        <h2 class="section-title" id="popular-title">Товары</h2>
+        <p class="section-description">Четыре товара для примера. Цены указаны за одну штуку.</p>
+        <div class="products-grid">
+        <article class="product-card" data-category="paper" data-price="80">
+          <img class="product-card-image" src="images/notebook.jpg" alt="Тетрадь с листами в клетку" width="640" height="480" loading="lazy">
+          <div class="product-card-body">
+            <p class="product-card-category">Бумага и хранение</p>
+            <h3 class="product-card-title">Тетрадь в клетку</h3>
+            <p class="product-card-description">Тетрадь в клетку для конспектов и домашних заданий.</p>
+            <p class="product-card-price">80 ₽ <span class="product-card-unit">/ шт.</span></p>
+            <button class="button button-primary product-card-button" type="button" data-product="Тетрадь в клетку">Заказать</button>
+          </div>
+        </article>
+        <article class="product-card" data-category="paper" data-price="120">
+          <img class="product-card-image" src="images/folder.png" alt="Бежевая папка для документов" width="640" height="480" loading="lazy">
+          <div class="product-card-body">
+            <p class="product-card-category">Бумага и хранение</p>
+            <h3 class="product-card-title">Папка для документов</h3>
+            <p class="product-card-description">Папка для распечаток, работ и других учебных материалов.</p>
+            <p class="product-card-price">120 ₽ <span class="product-card-unit">/ шт.</span></p>
+            <button class="button button-primary product-card-button" type="button" data-product="Папка для документов">Заказать</button>
+          </div>
+        </article>
+        <article class="product-card product-card-writing" data-category="writing" data-price="40">
+          <img class="product-card-image" src="images/pen.png" alt="Синяя шариковая ручка" width="640" height="480" loading="lazy">
+          <div class="product-card-body">
+            <p class="product-card-category">Для письма</p>
+            <h3 class="product-card-title">Ручка синяя</h3>
+            <p class="product-card-description">Шариковая ручка с синими чернилами для ежедневных записей.</p>
+            <p class="product-card-price">40 ₽ <span class="product-card-unit">/ шт.</span></p>
+            <button class="button button-primary product-card-button" type="button" data-product="Ручка синяя">Заказать</button>
+          </div>
+        </article>
+        <article class="product-card product-card-writing" data-category="writing" data-price="30">
+          <img class="product-card-image" src="images/pencil.jpg" alt="Карандаш HB с ластиком" width="640" height="480" loading="lazy">
+          <div class="product-card-body">
+            <p class="product-card-category">Для письма</p>
+            <h3 class="product-card-title">Карандаш HB</h3>
+            <p class="product-card-description">Простой карандаш средней твёрдости для заметок и чертежей.</p>
+            <p class="product-card-price">30 ₽ <span class="product-card-unit">/ шт.</span></p>
+            <button class="button button-primary product-card-button" type="button" data-product="Карандаш HB">Заказать</button>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section class="section" id="advantages" aria-labelledby="advantages-title">
+        <h2 class="section-title" id="advantages-title">О магазине</h2>
+        <ul class="advantages">
+          <li class="advantages-item"><h3 class="advantages-title">Небольшой ассортимент</h3><p>Тетрадь, папка, ручка и карандаш — всё видно на одной странице.</p></li>
+          <li class="advantages-item"><h3 class="advantages-title">Каталог товаров</h3><p>Посмотрите название, описание и цену каждого товара.</p></li>
+          <li class="advantages-item"><h3 class="advantages-title">Форма заявки</h3><p>Откройте форму из карточки выбранного товара.</p></li>
+        </ul>
+      </section>
+      <aside class="aside-info" aria-labelledby="aside-title"><h2 class="aside-info-title" id="aside-title">Учебный пример</h2><p>Магазин создан для практических работ. Товары и цены демонстрационные, реальные заказы не принимаются.</p></aside>
+      <section class="section" id="contacts" aria-labelledby="contacts-title">
+        <h2 class="section-title" id="contacts-title">Обратная связь</h2>
+        <p class="section-description">Есть вопрос о товаре? Откройте учебную форму или посмотрите контакты проекта.</p>
+        <button class="button button-primary" type="button" data-product="Общий вопрос">Открыть форму</button>
+        <a class="section-link" href="contacts.html">Контакты проекта</a>
+      </section>
+    </div>
+    <div class="container"><p class="success-message" id="success-message" role="status" tabindex="-1" hidden></p></div>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer-inner"><p>Я × МИРЭА · 2026</p><p>Учебный проект · Фронтенд и бэкенд разработка</p></div>
+  </footer>
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-note">
+    <h2 class="order-dialog-title" id="order-dialog-title">Оформление заявки</h2>
+    <p class="order-dialog-note" id="order-dialog-note">Учебная форма. Данные проверяются в браузере и никуда не отправляются.</p>
+    <p class="order-dialog-selection" id="selected-product-label"></p>
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <input id="selected-product" name="selected-product" type="hidden">
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-name">Имя *</label>
+        <input class="order-form-input" id="order-name" name="name" type="text" minlength="2" maxlength="80" autocomplete="given-name" required autofocus>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-email">E-mail *</label>
+        <input class="order-form-input" id="order-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-phone">Телефон *</label>
+        <input class="order-form-input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" placeholder="+7 (900) 000-00-00" title="Формат: +7 (900) 000-00-00" aria-describedby="phone-hint" required>
+        <small class="order-form-hint" id="phone-hint">Формат: +7 (900) 000-00-00</small>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-date">Дата связи</label>
+        <input class="order-form-input" id="order-date" name="date" type="date">
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-topic">Тема заявки *</label>
+        <select class="order-form-select" id="order-topic" name="topic" required>
+          <option value="">Выберите тему</option>
+          <option value="product">Заказ товара</option>
+          <option value="question">Вопрос о товаре</option>
+          <option value="other">Другой вопрос</option>
+        </select>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-comment">Комментарий</label>
+        <textarea class="order-form-textarea" id="order-comment" name="comment" rows="3" maxlength="2000" placeholder="Укажите количество или задайте вопрос"></textarea>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-agreement" for="order-agreement">
+          <input class="order-form-checkbox" id="order-agreement" name="agreement" type="checkbox" required>
+          Я согласен на обработку данных в учебном примере *
+        </label>
+      </div>
+      <p class="order-form-error" id="form-error" role="alert" hidden></p>
+      <div class="order-form-actions">
+        <button class="button button-secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button-primary" type="submit">Отправить заявку</button>
+      </div>
+    </form>
+  </dialog>
+  <noscript><p class="container">Для демонстрационной формы и фильтров включите JavaScript. Страницы и ссылки доступны без него.</p></noscript>
+</body>
 </html>
