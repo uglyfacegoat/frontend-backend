@@ -14,7 +14,7 @@ python3 -m http.server 8817 --bind 127.0.0.1
 
 [Репозиторий](https://github.com/uglyfacegoat/frontend-backend) · [GitHub Pages](https://uglyfacegoat.github.io/frontend-backend/)
 
-Текущие изменения подготовлены локально. Pages пока показывает предыдущую версию; новый магазин не опубликован.
+Практики 5–7 оформлены тремя отдельными ветками и Pull Request в main. GitHub Pages публикует main; фактическую опубликованную версию нужно открывать после завершения сборки Pages.
 
 ## Материалы для защиты
 
@@ -47,15 +47,19 @@ tests/browser.cjs       проверки сайта через Playwright
 
 | Практика | Требуемая ветка | Код и документация | GitHub |
 | --- | --- | --- | --- |
-| 5 | `feature/multi-page-navigation` | Проверены локально | Ветка, коммит и PR ещё не оформлены |
-| 6 | `feature/flex-grid-navigation` | Проверены локально | Ветка, коммит и PR ещё не оформлены |
-| 7 | `refactor/bem-css-classes` | Проверены локально | Ветка, коммит и PR ещё не оформлены |
+| 5 | `feature/multi-page-navigation` | Проверены локально | [PR №2](https://github.com/uglyfacegoat/frontend-backend/pull/2) |
+| 6 | `feature/flex-grid-navigation` | Проверены локально | [PR №3](https://github.com/uglyfacegoat/frontend-backend/pull/3) |
+| 7 | `refactor/bem-css-classes` | Проверены локально | [PR №4](https://github.com/uglyfacegoat/frontend-backend/pull/4) |
 
-Для каждого этапа по ТЗ нужно создать ветку, выполнить соответствующее изменение, сделать осмысленный коммит, push, создать PR в main и выполнить merge. После объединения — проверить GitHub Pages и показать историю, diff и PR преподавателю. Полное оформление сдачи пока не завершено.
+Для каждого этапа созданы ветка, коммит и PR. Практика 5 добавляет страницы и навигацию, практика 6 — Flexbox/Grid и фильтры, практика 7 переименовывает классы по БЭМ. PNG до и после БЭМ совпали для трёх страниц на 390 и 1440 px. Для демонстрации преподавателю нужно открыть Pages, историю коммитов, diff и три PR; объединение каждого этапа подтверждается статусом соответствующего PR.
 
 Методичка использует имя `kr1-html-css-shop`; здесь сохранена предоставленная репа `frontend-backend`.
 
-В исходной локальной копии обнаружен незавершённый интерактивный rebase main. Он не завершался и не отменялся. Для оформления новых этапов безопаснее использовать отдельную чистую копию репозитория. Посторонняя папка `crm-recovery-2026-09-21/` не относится к сайту: не включать её в коммиты или архив, не использовать `git add .` в исходной копии.
+Git-этапы выполнялись в отдельной чистой копии репозитория. Посторонние данные из исходной рабочей папки в коммиты не включались.
+
+## Почему есть JavaScript
+
+Методичка практики 3 требует `js/main.js` для открытия/закрытия dialog и базовой валидации формы. Методичка практики 7, этап 13, прямо требует проверить этот файл после БЭМ-рефакторинга. JS сохранён для этих сценариев; реальная фильтрация каталога — небольшое дополнение к разметке фильтров практики 6. Собственные ООП-классы в магазин не добавлялись.
 
 ## Примеры БЭМ
 
@@ -76,7 +80,7 @@ tests/browser.cjs       проверки сайта через Playwright
 ```sh
 NODE_PATH=/Users/aroslavzavgorodnev/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules \
 CHROME_PATH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' \
-TEST_OUTPUT_DIR=/private/tmp/stationery-browser-qa \
+TEST_OUTPUT_DIR=/private/tmp/stationery-final-qa \
 node tests/browser.cjs
 ```
 
