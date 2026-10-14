@@ -12,92 +12,92 @@
 <body>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   <header class="site-header">
-    <div class="container site-header-inner">
-      <a class="site-header-logo" href="index.html">Канцтовары<span class="site-header-caption">учебный магазин</span></a>
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="index.html">Канцтовары<span class="site-header__caption">учебный магазин</span></a>
       <nav class="site-nav" aria-label="Основная навигация">
-        <ul class="site-nav-list">
-          <li class="site-nav-item"><a class="site-nav-link" href="index.html">Главная</a></li>
-          <li class="site-nav-item"><a class="site-nav-link" href="catalog.html" aria-current="page">Каталог</a></li>
-          <li class="site-nav-item"><a class="site-nav-link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav-item"><a class="site-nav-link" href="index.html#advantages">О магазине</a></li>
-          <li class="site-nav-item"><a class="site-nav-link" href="index.html#popular">Товары</a></li>
-          <li class="site-nav-item"><a class="site-nav-link" href="index.html#contacts">Обратная связь</a></li>
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html" aria-current="page">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">О магазине</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <main class="page-main" id="main-content" tabindex="-1">
     <div class="container">
-      <nav class="breadcrumbs" aria-label="Хлебные крошки"><a class="breadcrumbs-link" href="index.html">Главная</a><span class="breadcrumbs-current" aria-current="page">Каталог</span></nav>
+      <nav class="breadcrumbs" aria-label="Хлебные крошки"><a class="breadcrumbs__link" href="index.html">Главная</a><span class="breadcrumbs__current" aria-current="page">Каталог</span></nav>
       <section class="section" aria-labelledby="catalog-title">
-        <h1 class="section-title" id="catalog-title">Каталог товаров</h1>
-        <p class="section-description">Выберите товар по категории и цене. Все цены демонстрационные.</p>
+        <h1 class="section__title" id="catalog-title">Каталог товаров</h1>
+        <p class="section__description">Выберите товар по категории и цене. Все цены демонстрационные.</p>
         <div class="catalog-layout">
           <aside class="catalog-filters" aria-labelledby="filters-title">
-            <h2 class="catalog-filters-title" id="filters-title">Фильтры</h2>
+            <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
             <form class="filters-form" id="filters-form" action="#" method="get">
-              <fieldset class="filters-form-group"><legend class="filters-form-legend">Категория</legend>
-                <label class="filters-form-check"><input name="category" value="paper" type="checkbox"> Бумага и хранение</label>
-                <label class="filters-form-check"><input name="category" value="writing" type="checkbox"> Для письма</label>
-                <p class="filters-form-hint">Без выбора — все товары.</p>
+              <fieldset class="filters-form__group"><legend class="filters-form__legend">Категория</legend>
+                <label class="filters-form__check"><input name="category" value="paper" type="checkbox"> Бумага и хранение</label>
+                <label class="filters-form__check"><input name="category" value="writing" type="checkbox"> Для письма</label>
+                <p class="filters-form__hint">Без выбора — все товары.</p>
               </fieldset>
-              <fieldset class="filters-form-group"><legend class="filters-form-legend">Цена, ₽</legend>
-                <label class="filters-form-label" for="price-from">От</label>
-                <input class="filters-form-input" id="price-from" name="price-from" type="number" min="0" step="1" placeholder="0">
-                <label class="filters-form-label" for="price-to">До</label>
-                <input class="filters-form-input" id="price-to" name="price-to" type="number" min="0" step="1" placeholder="150">
+              <fieldset class="filters-form__group"><legend class="filters-form__legend">Цена, ₽</legend>
+                <label class="filters-form__label" for="price-from">От</label>
+                <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" step="1" placeholder="0">
+                <label class="filters-form__label" for="price-to">До</label>
+                <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" step="1" placeholder="150">
               </fieldset>
-              <p class="filters-form-error" id="filters-error" role="alert" hidden></p>
-              <button class="button button-primary" type="submit">Применить</button>
-              <button class="button button-secondary" type="reset">Сбросить</button>
+              <p class="filters-form__error" id="filters-error" role="alert" hidden></p>
+              <button class="button button--primary" type="submit">Применить</button>
+              <button class="button button--secondary" type="reset">Сбросить</button>
             </form>
           </aside>
           <section class="catalog-products" aria-labelledby="services-title">
-            <h2 class="catalog-products-title" id="services-title">Список товаров</h2>
-            <p class="catalog-products-count" id="results-count" role="status">Найдено товаров: 4</p>
+            <h2 class="catalog-products__title" id="services-title">Список товаров</h2>
+            <p class="catalog-products__count" id="results-count" role="status">Найдено товаров: 4</p>
             <div class="products-grid" id="catalog-grid">
         <article class="product-card" data-category="paper" data-price="80">
-          <img class="product-card-image" src="images/notebook.jpg" alt="Тетрадь с листами в клетку" width="640" height="480" loading="lazy">
-          <div class="product-card-body">
-            <p class="product-card-category">Бумага и хранение</p>
-            <h3 class="product-card-title">Тетрадь в клетку</h3>
-            <p class="product-card-description">Тетрадь в клетку для конспектов и домашних заданий.</p>
-            <p class="product-card-price">80 ₽ <span class="product-card-unit">/ шт.</span></p>
-            <button class="button button-primary product-card-button" type="button" data-product="Тетрадь в клетку">Заказать</button>
+          <img class="product-card__image" src="images/notebook.jpg" alt="Тетрадь с листами в клетку" width="640" height="480" loading="lazy">
+          <div class="product-card__body">
+            <p class="product-card__category">Бумага и хранение</p>
+            <h3 class="product-card__title">Тетрадь в клетку</h3>
+            <p class="product-card__description">Тетрадь в клетку для конспектов и домашних заданий.</p>
+            <p class="product-card__price">80 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-product="Тетрадь в клетку">Заказать</button>
           </div>
         </article>
         <article class="product-card" data-category="paper" data-price="120">
-          <img class="product-card-image" src="images/folder.png" alt="Бежевая папка для документов" width="640" height="480" loading="lazy">
-          <div class="product-card-body">
-            <p class="product-card-category">Бумага и хранение</p>
-            <h3 class="product-card-title">Папка для документов</h3>
-            <p class="product-card-description">Папка для распечаток, работ и других учебных материалов.</p>
-            <p class="product-card-price">120 ₽ <span class="product-card-unit">/ шт.</span></p>
-            <button class="button button-primary product-card-button" type="button" data-product="Папка для документов">Заказать</button>
+          <img class="product-card__image" src="images/folder.png" alt="Бежевая папка для документов" width="640" height="480" loading="lazy">
+          <div class="product-card__body">
+            <p class="product-card__category">Бумага и хранение</p>
+            <h3 class="product-card__title">Папка для документов</h3>
+            <p class="product-card__description">Папка для распечаток, работ и других учебных материалов.</p>
+            <p class="product-card__price">120 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-product="Папка для документов">Заказать</button>
           </div>
         </article>
-        <article class="product-card product-card-writing" data-category="writing" data-price="40">
-          <img class="product-card-image" src="images/pen.png" alt="Синяя шариковая ручка" width="640" height="480" loading="lazy">
-          <div class="product-card-body">
-            <p class="product-card-category">Для письма</p>
-            <h3 class="product-card-title">Ручка синяя</h3>
-            <p class="product-card-description">Шариковая ручка с синими чернилами для ежедневных записей.</p>
-            <p class="product-card-price">40 ₽ <span class="product-card-unit">/ шт.</span></p>
-            <button class="button button-primary product-card-button" type="button" data-product="Ручка синяя">Заказать</button>
+        <article class="product-card product-card--writing" data-category="writing" data-price="40">
+          <img class="product-card__image" src="images/pen.png" alt="Синяя шариковая ручка" width="640" height="480" loading="lazy">
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title">Ручка синяя</h3>
+            <p class="product-card__description">Шариковая ручка с синими чернилами для ежедневных записей.</p>
+            <p class="product-card__price">40 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-product="Ручка синяя">Заказать</button>
           </div>
         </article>
-        <article class="product-card product-card-writing" data-category="writing" data-price="30">
-          <img class="product-card-image" src="images/pencil.jpg" alt="Карандаш HB с ластиком" width="640" height="480" loading="lazy">
-          <div class="product-card-body">
-            <p class="product-card-category">Для письма</p>
-            <h3 class="product-card-title">Карандаш HB</h3>
-            <p class="product-card-description">Простой карандаш средней твёрдости для заметок и чертежей.</p>
-            <p class="product-card-price">30 ₽ <span class="product-card-unit">/ шт.</span></p>
-            <button class="button button-primary product-card-button" type="button" data-product="Карандаш HB">Заказать</button>
+        <article class="product-card product-card--writing" data-category="writing" data-price="30">
+          <img class="product-card__image" src="images/pencil.jpg" alt="Карандаш HB с ластиком" width="640" height="480" loading="lazy">
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title">Карандаш HB</h3>
+            <p class="product-card__description">Простой карандаш средней твёрдости для заметок и чертежей.</p>
+            <p class="product-card__price">30 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-product="Карандаш HB">Заказать</button>
           </div>
         </article>
             </div>
-            <p class="catalog-products-empty" id="catalog-empty" hidden>По этим условиям товаров нет. Измените цену или сбросьте фильтры.</p>
+            <p class="catalog-products__empty" id="catalog-empty" hidden>По этим условиям товаров нет. Измените цену или сбросьте фильтры.</p>
           </section>
         </div>
       </section>
@@ -105,54 +105,54 @@
     <div class="container"><p class="success-message" id="success-message" role="status" tabindex="-1" hidden></p></div>
   </main>
   <footer class="site-footer">
-    <div class="container site-footer-inner"><p>Я × МИРЭА · 2026</p><p>Учебный проект · Фронтенд и бэкенд разработка</p></div>
+    <div class="container site-footer__inner"><p>Я × МИРЭА · 2026</p><p>Учебный проект · Фронтенд и бэкенд разработка</p></div>
   </footer>
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-note">
-    <h2 class="order-dialog-title" id="order-dialog-title">Оформление заявки</h2>
-    <p class="order-dialog-note" id="order-dialog-note">Учебная форма. Данные проверяются в браузере и никуда не отправляются.</p>
-    <p class="order-dialog-selection" id="selected-product-label"></p>
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+    <p class="order-dialog__note" id="order-dialog-note">Учебная форма. Данные проверяются в браузере и никуда не отправляются.</p>
+    <p class="order-dialog__selection" id="selected-product-label"></p>
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
       <input id="selected-product" name="selected-product" type="hidden">
-      <div class="order-form-field">
-        <label class="order-form-label" for="order-name">Имя *</label>
-        <input class="order-form-input" id="order-name" name="name" type="text" minlength="2" maxlength="80" autocomplete="given-name" required autofocus>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-name">Имя *</label>
+        <input class="order-form__input" id="order-name" name="name" type="text" minlength="2" maxlength="80" autocomplete="given-name" required autofocus>
       </div>
-      <div class="order-form-field">
-        <label class="order-form-label" for="order-email">E-mail *</label>
-        <input class="order-form-input" id="order-email" name="email" type="email" autocomplete="email" required>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-email">E-mail *</label>
+        <input class="order-form__input" id="order-email" name="email" type="email" autocomplete="email" required>
       </div>
-      <div class="order-form-field">
-        <label class="order-form-label" for="order-phone">Телефон *</label>
-        <input class="order-form-input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" placeholder="+7 (900) 000-00-00" title="Формат: +7 (900) 000-00-00" aria-describedby="phone-hint" required>
-        <small class="order-form-hint" id="phone-hint">Формат: +7 (900) 000-00-00</small>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-phone">Телефон *</label>
+        <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" placeholder="+7 (900) 000-00-00" title="Формат: +7 (900) 000-00-00" aria-describedby="phone-hint" required>
+        <small class="order-form__hint" id="phone-hint">Формат: +7 (900) 000-00-00</small>
       </div>
-      <div class="order-form-field">
-        <label class="order-form-label" for="order-date">Дата связи</label>
-        <input class="order-form-input" id="order-date" name="date" type="date">
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-date">Дата связи</label>
+        <input class="order-form__input" id="order-date" name="date" type="date">
       </div>
-      <div class="order-form-field">
-        <label class="order-form-label" for="order-topic">Тема заявки *</label>
-        <select class="order-form-select" id="order-topic" name="topic" required>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-topic">Тема заявки *</label>
+        <select class="order-form__select" id="order-topic" name="topic" required>
           <option value="">Выберите тему</option>
           <option value="product">Заказ товара</option>
           <option value="question">Вопрос о товаре</option>
           <option value="other">Другой вопрос</option>
         </select>
       </div>
-      <div class="order-form-field">
-        <label class="order-form-label" for="order-comment">Комментарий</label>
-        <textarea class="order-form-textarea" id="order-comment" name="comment" rows="3" maxlength="2000" placeholder="Укажите количество или задайте вопрос"></textarea>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-comment">Комментарий</label>
+        <textarea class="order-form__textarea" id="order-comment" name="comment" rows="3" maxlength="2000" placeholder="Укажите количество или задайте вопрос"></textarea>
       </div>
-      <div class="order-form-field">
-        <label class="order-form-agreement" for="order-agreement">
-          <input class="order-form-checkbox" id="order-agreement" name="agreement" type="checkbox" required>
+      <div class="order-form__field">
+        <label class="order-form__agreement" for="order-agreement">
+          <input class="order-form__checkbox" id="order-agreement" name="agreement" type="checkbox" required>
           Я согласен на обработку данных в учебном примере *
         </label>
       </div>
-      <p class="order-form-error" id="form-error" role="alert" hidden></p>
-      <div class="order-form-actions">
-        <button class="button button-secondary" type="button" id="close-order-dialog">Закрыть</button>
-        <button class="button button-primary" type="submit">Отправить заявку</button>
+      <p class="order-form__error" id="form-error" role="alert" hidden></p>
+      <div class="order-form__actions">
+        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button--primary" type="submit">Отправить заявку</button>
       </div>
     </form>
   </dialog>
