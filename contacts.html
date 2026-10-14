@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Автор учебного проекта, группа, ссылка на репозиторий и демонстрационная обратная связь.">
+  <title>Контакты — Канцтовары</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="site-header-logo" href="index.html">Канцтовары<span class="site-header-caption">учебный магазин</span></a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav-list">
+          <li class="site-nav-item"><a class="site-nav-link" href="index.html">Главная</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="contacts.html" aria-current="page">Контакты</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="index.html#advantages">О магазине</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="index.html#popular">Товары</a></li>
+          <li class="site-nav-item"><a class="site-nav-link" href="index.html#contacts">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main" id="main-content" tabindex="-1">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки"><a class="breadcrumbs-link" href="index.html">Главная</a><span class="breadcrumbs-current" aria-current="page">Контакты</span></nav>
+      <section class="section" aria-labelledby="contact-page-title">
+        <h1 class="section-title" id="contact-page-title">Контакты проекта</h1>
+        <p class="section-description">«Канцтовары» — учебный магазин по дисциплине «Фронтенд и бэкенд разработка».</p>
+        <dl class="contact-details">
+          <dt class="contact-details-term">Автор</dt><dd class="contact-details-value">Завгороднев Ярослав Александрович</dd>
+          <dt class="contact-details-term">Группа</dt><dd class="contact-details-value">ЭФБО-02-25</dd>
+          <dt class="contact-details-term">Код проекта</dt><dd class="contact-details-value"><a href="https://github.com/uglyfacegoat/frontend-backend">Репозиторий на GitHub</a></dd>
+        </dl>
+      </section>
+      <section class="section" id="feedback" aria-labelledby="feedback-title">
+        <h2 class="section-title" id="feedback-title">Обратная связь</h2>
+        <p class="section-description">Учебная форма показывает проверку полей и модальное окно. Реальные заявки не принимаются.</p>
+        <button class="button button-primary" type="button" data-product="Общий вопрос">Открыть форму</button>
+        <a class="section-link" href="index.html#contacts">Обратная связь на главной</a>
+      </section>
+    </div>
+    <div class="container"><p class="success-message" id="success-message" role="status" tabindex="-1" hidden></p></div>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer-inner"><p>Я × МИРЭА · 2026</p><p>Учебный проект · Фронтенд и бэкенд разработка</p></div>
+  </footer>
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-note">
+    <h2 class="order-dialog-title" id="order-dialog-title">Оформление заявки</h2>
+    <p class="order-dialog-note" id="order-dialog-note">Учебная форма. Данные проверяются в браузере и никуда не отправляются.</p>
+    <p class="order-dialog-selection" id="selected-product-label"></p>
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <input id="selected-product" name="selected-product" type="hidden">
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-name">Имя *</label>
+        <input class="order-form-input" id="order-name" name="name" type="text" minlength="2" maxlength="80" autocomplete="given-name" required autofocus>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-email">E-mail *</label>
+        <input class="order-form-input" id="order-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-phone">Телефон *</label>
+        <input class="order-form-input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" placeholder="+7 (900) 000-00-00" title="Формат: +7 (900) 000-00-00" aria-describedby="phone-hint" required>
+        <small class="order-form-hint" id="phone-hint">Формат: +7 (900) 000-00-00</small>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-date">Дата связи</label>
+        <input class="order-form-input" id="order-date" name="date" type="date">
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-topic">Тема заявки *</label>
+        <select class="order-form-select" id="order-topic" name="topic" required>
+          <option value="">Выберите тему</option>
+          <option value="product">Заказ товара</option>
+          <option value="question">Вопрос о товаре</option>
+          <option value="other">Другой вопрос</option>
+        </select>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-label" for="order-comment">Комментарий</label>
+        <textarea class="order-form-textarea" id="order-comment" name="comment" rows="3" maxlength="2000" placeholder="Укажите количество или задайте вопрос"></textarea>
+      </div>
+      <div class="order-form-field">
+        <label class="order-form-agreement" for="order-agreement">
+          <input class="order-form-checkbox" id="order-agreement" name="agreement" type="checkbox" required>
+          Я согласен на обработку данных в учебном примере *
+        </label>
+      </div>
+      <p class="order-form-error" id="form-error" role="alert" hidden></p>
+      <div class="order-form-actions">
+        <button class="button button-secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button-primary" type="submit">Отправить заявку</button>
+      </div>
+    </form>
+  </dialog>
+  <noscript><p class="container">Для демонстрационной формы и фильтров включите JavaScript. Страницы и ссылки доступны без него.</p></noscript>
+</body>
+</html>
