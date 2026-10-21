@@ -20,9 +20,9 @@ const output = process.env.TEST_OUTPUT_DIR || '/private/tmp/fibr-browser-qa';
   page.on('requestfailed', (request) => errors.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText}`));
   try {
     const titles = new Set();
-    for (const width of [390, 768, 1440]) {
+    for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 960 });
-      for (const file of ['index.html', 'catalog.html', 'contacts.html']) {
+      for (const file of ['index.html', 'catalog.html', 'contacts.html', 'product.html', 'cart.html', 'comparison.html']) {
         await page.goto(new URL(file, base).href);
         await page.evaluate(() => document.fonts.ready);
         await page.locator('img').evaluateAll((images) => Promise.all(images.map((img) => {
@@ -62,7 +62,7 @@ const output = process.env.TEST_OUTPUT_DIR || '/private/tmp/fibr-browser-qa';
         results.push(`${file} ${width}px: HTML, assets, links, Flex/Grid, no overflow`);
       }
     }
-    assert.equal(titles.size, 3);
+    assert.equal(titles.size, 6);
     await page.goto(new URL('index.html', base).href);
     await page.getByRole('link', { name: 'Каталог', exact: true }).click();
     assert.ok(page.url().endsWith('/catalog.html'));
@@ -128,22 +128,22 @@ const output = process.env.TEST_OUTPUT_DIR || '/private/tmp/fibr-browser-qa';
     const visibleCards = () => page.locator('#catalog-grid .product-card:visible').count();
     await page.getByLabel('Для письма', { exact: true }).check();
     await page.getByRole('button', { name: 'Применить' }).click();
-    assert.equal(await visibleCards(), 2);
-    await page.locator('#price-to').fill('35');
+    assert.equal(await visibleCards(), 10);
+    await page.locator('#price-to').fill('31');
     await page.getByRole('button', { name: 'Применить' }).click();
     assert.equal(await visibleCards(), 1);
     await page.locator('#price-from').fill('50');
     await page.getByRole('button', { name: 'Применить' }).click();
     assert.ok(await page.locator('#filters-error').isVisible());
     assert.equal(await visibleCards(), 1);
-    await page.locator('#price-from').fill('41');
-    await page.locator('#price-to').fill('50');
+    await page.locator('#price-from').fill('46');
+    await page.locator('#price-to').fill('49');
     await page.getByRole('button', { name: 'Применить' }).click();
     assert.equal(await visibleCards(), 0);
     assert.ok(await page.locator('#catalog-empty').isVisible());
     await page.getByRole('button', { name: 'Сбросить' }).click();
-    await page.waitForFunction(() => document.querySelectorAll('#catalog-grid .product-card:not([hidden])').length === 4);
-    assert.equal(await visibleCards(), 4);
+    await page.waitForFunction(() => document.querySelectorAll('#catalog-grid .product-card:not([hidden])').length === 16);
+    assert.equal(await visibleCards(), 16);
     assert.ok(!(await page.locator('#catalog-empty').isVisible()));
     results.push('Filters: category, price, invalid range, no results, reset');
     await page.keyboard.press('Tab');

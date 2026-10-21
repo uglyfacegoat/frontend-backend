@@ -1,5 +1,18 @@
 'use strict';
 
+document.documentElement.classList.remove('no-js');
+
+const siteHeader = document.querySelector('.site-header');
+const layoutVariables = [...document.styleSheets[0].cssRules].find((rule) => rule.selectorText === ':root');
+
+function syncHeaderHeight() {
+  // CSSOM обновляет переменную без inline-стилей в HTML.
+  layoutVariables.style.setProperty('--measured-header-height', `${Math.ceil(siteHeader.getBoundingClientRect().height)}px`);
+}
+
+syncHeaderHeight();
+new ResizeObserver(syncHeaderHeight).observe(siteHeader);
+
 const dialog = document.querySelector('#order-dialog');
 const orderForm = document.querySelector('#order-form');
 const successMessage = document.querySelector('#success-message');
@@ -26,17 +39,17 @@ function clearValidation() {
   formError.textContent = '';
 }
 
-document.querySelectorAll('[data-product]').forEach((button) => {
-  button.addEventListener('click', () => {
-    dialogTrigger = button;
-    completed = false;
-    orderForm.reset();
-    clearValidation();
-    successMessage.hidden = true;
-    document.querySelector('#selected-product').value = button.dataset.product;
-    document.querySelector('#selected-product-label').textContent = `Выбрано: ${button.dataset.product}`;
-    dialog.showModal();
-  });
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('button[data-product]');
+  if (!button) return;
+  dialogTrigger = button;
+  completed = false;
+  orderForm.reset();
+  clearValidation();
+  successMessage.hidden = true;
+  document.querySelector('#selected-product').value = button.dataset.product;
+  document.querySelector('#selected-product-label').textContent = `Выбрано: ${button.dataset.product}`;
+  dialog.showModal();
 });
 
 document.querySelector('#close-order-dialog').addEventListener('click', () => dialog.close());
@@ -89,12 +102,14 @@ if (filtersForm) {
 
   function applyFilters() {
     const categories = [...filtersForm.querySelectorAll('[name="category"]:checked')].map((field) => field.value);
+    const query = filtersForm.elements.namedItem('query').value.trim().toLowerCase();
     const min = priceFrom.value === '' ? 0 : Number(priceFrom.value);
     const max = priceTo.value === '' ? Infinity : Number(priceTo.value);
     let count = 0;
     cards.forEach((card) => {
       const price = Number(card.dataset.price);
-      const visible = (!categories.length || categories.includes(card.dataset.category)) && price >= min && price <= max;
+      const matchesName = card.querySelector('.product-card__title').textContent.toLowerCase().includes(query);
+      const visible = matchesName && (!categories.length || categories.includes(card.dataset.category)) && price >= min && price <= max;
       card.hidden = !visible;
       if (visible) count += 1;
     });

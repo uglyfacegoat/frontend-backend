@@ -1,0 +1,15 @@
+{
+  "name": "frontend-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Учебный магазин канцтоваров на HTML, CSS и JavaScript",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node tests/browser.cjs && node tests/shop.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

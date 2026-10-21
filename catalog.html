@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,11 @@
   <title>Каталог товаров — Канцтовары</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/products.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/shop.js" defer></script>
 </head>
-<body>
+<body id="page-top">
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   <header class="site-header">
     <div class="container site-header__inner">
@@ -22,6 +24,8 @@
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">О магазине</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Товары</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="comparison.html">Сравнение (<span data-comparison-count>0</span>)</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина (<span data-cart-count>0</span>)</a></li>
         </ul>
       </nav>
     </div>
@@ -31,11 +35,13 @@
       <nav class="breadcrumbs" aria-label="Хлебные крошки"><a class="breadcrumbs__link" href="index.html">Главная</a><span class="breadcrumbs__current" aria-current="page">Каталог</span></nav>
       <section class="section" aria-labelledby="catalog-title">
         <h1 class="section__title" id="catalog-title">Каталог товаров</h1>
-        <p class="section__description">Выберите товар по категории и цене. Все цены демонстрационные.</p>
+        <p class="section__description">16 товаров для учёбы. Откройте карточку, добавьте товар в корзину или сравните характеристики.</p>
+        <p class="catalog-links"><a href="comparison.html">Сравнение характеристик</a><a href="#faq">Частые вопросы</a></p>
         <div class="catalog-layout">
           <aside class="catalog-filters" aria-labelledby="filters-title">
             <h2 class="catalog-filters__title" id="filters-title">Фильтры</h2>
             <form class="filters-form" id="filters-form" action="#" method="get">
+              <label class="filters-form__label" for="product-query">Название товара</label><input class="filters-form__input" id="product-query" name="query" type="search" placeholder="Например, ручка">
               <fieldset class="filters-form__group"><legend class="filters-form__legend">Категория</legend>
                 <label class="filters-form__check"><input name="category" value="paper" type="checkbox"> Бумага и хранение</label>
                 <label class="filters-form__check"><input name="category" value="writing" type="checkbox"> Для письма</label>
@@ -45,7 +51,7 @@
                 <label class="filters-form__label" for="price-from">От</label>
                 <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" step="1" placeholder="0">
                 <label class="filters-form__label" for="price-to">До</label>
-                <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" step="1" placeholder="150">
+                <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" step="1" placeholder="450">
               </fieldset>
               <p class="filters-form__error" id="filters-error" role="alert" hidden></p>
               <button class="button button--primary" type="submit">Применить</button>
@@ -54,52 +60,196 @@
           </aside>
           <section class="catalog-products" aria-labelledby="services-title">
             <h2 class="catalog-products__title" id="services-title">Список товаров</h2>
-            <p class="catalog-products__count" id="results-count" role="status">Найдено товаров: 4</p>
+            <p class="catalog-products__count" id="results-count" role="status">Найдено товаров: 16</p>
             <div class="products-grid" id="catalog-grid">
-        <article class="product-card" data-category="paper" data-price="80">
-          <img class="product-card__image" src="images/notebook.jpg" alt="Тетрадь с листами в клетку" width="640" height="480" loading="lazy">
+        <article class="product-card" data-category="paper" data-price="80" data-product-id="notebook">
+          <a class="product-card__image-link" href="product.html?id=notebook" aria-label="Открыть товар: Тетрадь в клетку"><img class="product-card__image" src="images/notebook.jpg" alt="Тетрадь с листами в клетку" width="640" height="480" loading="lazy"></a>
           <div class="product-card__body">
             <p class="product-card__category">Бумага и хранение</p>
-            <h3 class="product-card__title">Тетрадь в клетку</h3>
+            <h3 class="product-card__title"><a href="product.html?id=notebook">Тетрадь в клетку</a></h3>
             <p class="product-card__description">Тетрадь в клетку для конспектов и домашних заданий.</p>
             <p class="product-card__price">80 ₽ <span class="product-card__unit">/ шт.</span></p>
-            <button class="button button--primary product-card__button" type="button" data-product="Тетрадь в клетку">Заказать</button>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="notebook">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Тетрадь в клетку">Заказать</button><button class="button button--secondary" type="button" data-compare-add="notebook" aria-pressed="false">Сравнить</button></div>
           </div>
         </article>
-        <article class="product-card" data-category="paper" data-price="120">
-          <img class="product-card__image" src="images/folder.png" alt="Бежевая папка для документов" width="640" height="480" loading="lazy">
+        <article class="product-card" data-category="paper" data-price="120" data-product-id="folder">
+          <a class="product-card__image-link" href="product.html?id=folder" aria-label="Открыть товар: Папка для документов"><img class="product-card__image" src="images/folder.png" alt="Бежевая папка для документов" width="640" height="480" loading="lazy"></a>
           <div class="product-card__body">
             <p class="product-card__category">Бумага и хранение</p>
-            <h3 class="product-card__title">Папка для документов</h3>
+            <h3 class="product-card__title"><a href="product.html?id=folder">Папка для документов</a></h3>
             <p class="product-card__description">Папка для распечаток, работ и других учебных материалов.</p>
             <p class="product-card__price">120 ₽ <span class="product-card__unit">/ шт.</span></p>
-            <button class="button button--primary product-card__button" type="button" data-product="Папка для документов">Заказать</button>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="folder">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Папка для документов">Заказать</button><button class="button button--secondary" type="button" data-compare-add="folder" aria-pressed="false">Сравнить</button></div>
           </div>
         </article>
-        <article class="product-card product-card--writing" data-category="writing" data-price="40">
-          <img class="product-card__image" src="images/pen.png" alt="Синяя шариковая ручка" width="640" height="480" loading="lazy">
+        <article class="product-card product-card--writing" data-category="writing" data-price="40" data-product-id="pen">
+          <a class="product-card__image-link" href="product.html?id=pen" aria-label="Открыть товар: Ручка синяя"><img class="product-card__image" src="images/pen.png" alt="Синяя шариковая ручка" width="640" height="480" loading="lazy"></a>
           <div class="product-card__body">
             <p class="product-card__category">Для письма</p>
-            <h3 class="product-card__title">Ручка синяя</h3>
+            <h3 class="product-card__title"><a href="product.html?id=pen">Ручка синяя</a></h3>
             <p class="product-card__description">Шариковая ручка с синими чернилами для ежедневных записей.</p>
             <p class="product-card__price">40 ₽ <span class="product-card__unit">/ шт.</span></p>
-            <button class="button button--primary product-card__button" type="button" data-product="Ручка синяя">Заказать</button>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="pen">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Ручка синяя">Заказать</button><button class="button button--secondary" type="button" data-compare-add="pen" aria-pressed="false">Сравнить</button></div>
           </div>
         </article>
-        <article class="product-card product-card--writing" data-category="writing" data-price="30">
-          <img class="product-card__image" src="images/pencil.jpg" alt="Карандаш HB с ластиком" width="640" height="480" loading="lazy">
+        <article class="product-card product-card--writing" data-category="writing" data-price="30" data-product-id="pencil">
+          <a class="product-card__image-link" href="product.html?id=pencil" aria-label="Открыть товар: Карандаш HB"><img class="product-card__image" src="images/pencil.jpg" alt="Карандаш HB с ластиком" width="640" height="480" loading="lazy"></a>
           <div class="product-card__body">
             <p class="product-card__category">Для письма</p>
-            <h3 class="product-card__title">Карандаш HB</h3>
+            <h3 class="product-card__title"><a href="product.html?id=pencil">Карандаш HB</a></h3>
             <p class="product-card__description">Простой карандаш средней твёрдости для заметок и чертежей.</p>
             <p class="product-card__price">30 ₽ <span class="product-card__unit">/ шт.</span></p>
-            <button class="button button--primary product-card__button" type="button" data-product="Карандаш HB">Заказать</button>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="pencil">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Карандаш HB">Заказать</button><button class="button button--secondary" type="button" data-compare-add="pencil" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card" data-category="paper" data-price="180" data-product-id="notepad">
+          <a class="product-card__image-link" href="product.html?id=notepad" aria-label="Открыть товар: Блокнот A4"><img class="product-card__image" src="images/notepad.jpg" alt="Тёмные блокноты A4 в твёрдой обложке" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Бумага и хранение</p>
+            <h3 class="product-card__title"><a href="product.html?id=notepad">Блокнот A4</a></h3>
+            <p class="product-card__description">Блокнот в твёрдой обложке для планов, записей и учебных заметок.</p>
+            <p class="product-card__price">180 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="notepad">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Блокнот A4">Заказать</button><button class="button button--secondary" type="button" data-compare-add="notepad" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card" data-category="paper" data-price="450" data-product-id="paper">
+          <a class="product-card__image-link" href="product.html?id=paper" aria-label="Открыть товар: Бумага A4, 500 листов"><img class="product-card__image" src="images/paper.jpg" alt="Пачка белой бумаги A4, 500 листов" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Бумага и хранение</p>
+            <h3 class="product-card__title"><a href="product.html?id=paper">Бумага A4, 500 листов</a></h3>
+            <p class="product-card__description">Белая бумага плотностью 80 г/м² для печати конспектов и учебных работ.</p>
+            <p class="product-card__price">450 ₽ <span class="product-card__unit">/ пачка</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="paper">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Бумага A4, 500 листов">Заказать</button><button class="button button--secondary" type="button" data-compare-add="paper" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="50" data-product-id="eraser">
+          <a class="product-card__image-link" href="product.html?id=eraser" aria-label="Открыть товар: Ластик"><img class="product-card__image" src="images/eraser.jpg" alt="Белый ластик в синей бумажной обёртке" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=eraser">Ластик</a></h3>
+            <p class="product-card__description">Ластик для удаления карандашных записей с бумаги.</p>
+            <p class="product-card__price">50 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="eraser">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Ластик">Заказать</button><button class="button button--secondary" type="button" data-compare-add="eraser" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="90" data-product-id="highlighter">
+          <a class="product-card__image-link" href="product.html?id=highlighter" aria-label="Открыть товар: Текстовыделитель"><img class="product-card__image" src="images/highlighter.jpg" alt="Розовый текстовыделитель с колпачком" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=highlighter">Текстовыделитель</a></h3>
+            <p class="product-card__description">Розовый маркер для выделения важных мест в конспектах.</p>
+            <p class="product-card__price">90 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="highlighter">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Текстовыделитель">Заказать</button><button class="button button--secondary" type="button" data-compare-add="highlighter" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="60" data-product-id="ruler">
+          <a class="product-card__image-link" href="product.html?id=ruler" aria-label="Открыть товар: Линейка 30 см"><img class="product-card__image" src="images/ruler.jpg" alt="Пластиковая линейка Helix длиной 30 сантиметров" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=ruler">Линейка 30 см</a></h3>
+            <p class="product-card__description">Линейка для измерений, чертежей и аккуратного подчёркивания.</p>
+            <p class="product-card__price">60 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="ruler">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Линейка 30 см">Заказать</button><button class="button button--secondary" type="button" data-compare-add="ruler" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="70" data-product-id="sharpener">
+          <a class="product-card__image-link" href="product.html?id=sharpener" aria-label="Открыть товар: Точилка с контейнером"><img class="product-card__image" src="images/sharpener.jpg" alt="Точилка Staedtler Noris с контейнером для стружки" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=sharpener">Точилка с контейнером</a></h3>
+            <p class="product-card__description">Точилка для карандашей с контейнером для сбора стружки.</p>
+            <p class="product-card__price">70 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="sharpener">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Точилка с контейнером">Заказать</button><button class="button button--secondary" type="button" data-compare-add="sharpener" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card" data-category="paper" data-price="100" data-product-id="sticky-notes">
+          <a class="product-card__image-link" href="product.html?id=sticky-notes" aria-label="Открыть товар: Стикеры для заметок"><img class="product-card__image" src="images/sticky-notes.jpg" alt="Кубик стикеров Pukka пастельных цветов" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Бумага и хранение</p>
+            <h3 class="product-card__title"><a href="product.html?id=sticky-notes">Стикеры для заметок</a></h3>
+            <p class="product-card__description">Самоклеящиеся листочки для напоминаний, закладок и коротких заметок.</p>
+            <p class="product-card__price">100 ₽ <span class="product-card__unit">/ блок</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="sticky-notes">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Стикеры для заметок">Заказать</button><button class="button button--secondary" type="button" data-compare-add="sticky-notes" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card" data-category="paper" data-price="75" data-product-id="clips">
+          <a class="product-card__image-link" href="product.html?id=clips" aria-label="Открыть товар: Скрепки, 100 штук"><img class="product-card__image" src="images/clips.jpg" alt="Упаковка из 100 металлических скрепок" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Бумага и хранение</p>
+            <h3 class="product-card__title"><a href="product.html?id=clips">Скрепки, 100 штук</a></h3>
+            <p class="product-card__description">Металлические скрепки для соединения листов без проколов.</p>
+            <p class="product-card__price">75 ₽ <span class="product-card__unit">/ уп.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="clips">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Скрепки, 100 штук">Заказать</button><button class="button button--secondary" type="button" data-compare-add="clips" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="55" data-product-id="pen-black">
+          <a class="product-card__image-link" href="product.html?id=pen-black" aria-label="Открыть товар: Ручка чёрная"><img class="product-card__image" src="images/pen-black.jpg" alt="Чёрная ручка Zebra с металлическим корпусом" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=pen-black">Ручка чёрная</a></h3>
+            <p class="product-card__description">Чёрная шариковая ручка с металлическим корпусом и нажимным механизмом.</p>
+            <p class="product-card__price">55 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="pen-black">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Ручка чёрная">Заказать</button><button class="button button--secondary" type="button" data-compare-add="pen-black" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="65" data-product-id="pen-red">
+          <a class="product-card__image-link" href="product.html?id=pen-red" aria-label="Открыть товар: Ручка красная"><img class="product-card__image" src="images/pen-red.jpg" alt="Красная шариковая ручка Staedtler Stick" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=pen-red">Ручка красная</a></h3>
+            <p class="product-card__description">Красная ручка для исправлений, проверки работ и выделения записей.</p>
+            <p class="product-card__price">65 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="pen-red">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Ручка красная">Заказать</button><button class="button button--secondary" type="button" data-compare-add="pen-red" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="35" data-product-id="pencil-2b">
+          <a class="product-card__image-link" href="product.html?id=pencil-2b" aria-label="Открыть товар: Карандаш 2B"><img class="product-card__image" src="images/pencil-2b.jpg" alt="Карандаш Staedtler Noris с грифелем 2B" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=pencil-2b">Карандаш 2B</a></h3>
+            <p class="product-card__description">Мягкий карандаш 2B для набросков, штриховки и рисунков.</p>
+            <p class="product-card__price">35 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="pencil-2b">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Карандаш 2B">Заказать</button><button class="button button--secondary" type="button" data-compare-add="pencil-2b" aria-pressed="false">Сравнить</button></div>
+          </div>
+        </article>
+        <article class="product-card product-card--writing" data-category="writing" data-price="45" data-product-id="pencil-4b">
+          <a class="product-card__image-link" href="product.html?id=pencil-4b" aria-label="Открыть товар: Карандаш 4B"><img class="product-card__image" src="images/pencil-4b.jpg" alt="Красно-чёрный карандаш Staedtler Tradition 4B" width="640" height="480" loading="lazy"></a>
+          <div class="product-card__body">
+            <p class="product-card__category">Для письма</p>
+            <h3 class="product-card__title"><a href="product.html?id=pencil-4b">Карандаш 4B</a></h3>
+            <p class="product-card__description">Карандаш 4B для тёмной штриховки, мягких линий и художественных зарисовок.</p>
+            <p class="product-card__price">45 ₽ <span class="product-card__unit">/ шт.</span></p>
+            <button class="button button--primary product-card__button" type="button" data-cart-add="pencil-4b">В корзину</button>
+            <div class="product-card__actions"><button class="button button--secondary" type="button" data-product="Карандаш 4B">Заказать</button><button class="button button--secondary" type="button" data-compare-add="pencil-4b" aria-pressed="false">Сравнить</button></div>
           </div>
         </article>
             </div>
             <p class="catalog-products__empty" id="catalog-empty" hidden>По этим условиям товаров нет. Измените цену или сбросьте фильтры.</p>
           </section>
         </div>
+      </section>
+      <section class="section faq" id="faq" aria-labelledby="faq-title"><h2 class="section__title" id="faq-title">Часто задаваемые вопросы</h2>
+        <details class="faq__item"><summary class="faq__question">Как найти нужный товар?</summary><p class="faq__answer">В каталоге можно указать название, выбрать категорию и диапазон цены. Нажмите «Применить», чтобы увидеть результат, или «Сбросить», чтобы снова показать все 16 товаров.</p></details>
+        <details class="faq__item"><summary class="faq__question">Как сравнить ручки или карандаши?</summary><p class="faq__answer">Откройте страницу товара и нажмите «Добавить в сравнение». Повторите для другого товара, затем откройте «Сравнение» в шапке. Каждый выбранный товар появится отдельным столбцом, а характеристики — строками. Можно выбрать до четырёх товаров.</p></details>
+        <details class="faq__item"><summary class="faq__question">Чем отличаются карандаши HB, 2B и 4B?</summary><p class="faq__answer">HB подходит для обычных записей. 2B мягче и оставляет более тёмный след, а 4B используют для ещё более мягких линий и тёмной штриховки. В блоке характеристик указаны твёрдость и наличие ластика.</p></details>
+        <details class="faq__item"><summary class="faq__question">Как работает корзина?</summary><p class="faq__answer">Нажмите «В корзину» в каталоге или на странице товара. В корзине можно изменить количество, удалить позицию и увидеть общую сумму. Список сохраняется в этом браузере; личные данные не сохраняются.</p></details>
+        <details class="faq__item"><summary class="faq__question">Как открыть форму заявки?</summary><p class="faq__answer">Кнопка «Заказать» открывает прежнюю быструю форму. Кнопка «Оформить заявку» в корзине передаёт в эту же форму список выбранных товаров. Поля имени, e-mail, телефона, даты, темы и комментария сохранены.</p></details>
+        <details class="faq__item"><summary class="faq__question">Можно ли здесь оплатить покупку?</summary><p class="faq__answer">Нет. Магазин учебный: ассортимент, цены и характеристики демонстрационные. Форма только проверяет данные в браузере, никуда их не отправляет и не сохраняет. Реальные заказы, оплата и доставка не предусмотрены.</p></details>
       </section>
     </div>
     <div class="container"><p class="success-message" id="success-message" role="status" tabindex="-1" hidden></p></div>
@@ -156,6 +306,8 @@
       </div>
     </form>
   </dialog>
-  <noscript><p class="container">Для демонстрационной формы и фильтров включите JavaScript. Страницы и ссылки доступны без него.</p></noscript>
+  <a class="button button--primary back-to-top" href="#page-top" aria-label="Вернуться к началу страницы">Наверх</a>
+  <p class="shop-notice" id="shop-notice" role="status" hidden></p>
+  <noscript><p class="container">Для корзины, сравнения, выбранной карточки товара, формы и фильтров включите JavaScript. Каталог, FAQ, контакты и ссылки доступны без него.</p></noscript>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,11 @@
   <title>Контакты — Канцтовары</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/products.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/shop.js" defer></script>
 </head>
-<body>
+<body id="page-top">
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   <header class="site-header">
     <div class="container site-header__inner">
@@ -22,6 +24,8 @@
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">О магазине</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Товары</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="comparison.html">Сравнение (<span data-comparison-count>0</span>)</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина (<span data-cart-count>0</span>)</a></li>
         </ul>
       </nav>
     </div>
@@ -99,6 +103,8 @@
       </div>
     </form>
   </dialog>
-  <noscript><p class="container">Для демонстрационной формы и фильтров включите JavaScript. Страницы и ссылки доступны без него.</p></noscript>
+  <a class="button button--primary back-to-top" href="#page-top" aria-label="Вернуться к началу страницы">Наверх</a>
+  <p class="shop-notice" id="shop-notice" role="status" hidden></p>
+  <noscript><p class="container">Для корзины, сравнения, выбранной карточки товара, формы и фильтров включите JavaScript. Каталог, FAQ, контакты и ссылки доступны без него.</p></noscript>
 </body>
 </html>
