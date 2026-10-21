@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Корзина канцтоваров: количество, удаление товаров, общая сумма и учебная заявка.">
+  <title>Корзина — Канцтовары</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/shop.js" defer></script>
+</head>
+<body id="page-top">
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="index.html">Канцтовары<span class="site-header__caption">учебный магазин</span></a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">О магазине</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="comparison.html">Сравнение (<span data-comparison-count>0</span>)</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="cart.html" aria-current="page">Корзина (<span data-cart-count>0</span>)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main" id="main-content" tabindex="-1">
+    <div class="container"><nav class="breadcrumbs" aria-label="Хлебные крошки"><a class="breadcrumbs__link" href="index.html">Главная</a><a class="breadcrumbs__link" href="catalog.html">Каталог</a><span class="breadcrumbs__current" aria-current="page">Корзина</span></nav>
+      <section class="section" aria-labelledby="cart-title"><div class="section-heading"><h1 class="section__title" id="cart-title">Корзина</h1><button class="button button--secondary" id="cart-clear" type="button" disabled>Очистить корзину</button></div>
+        <p class="section__description">Измените количество товаров и проверьте сумму. Корзина сохраняется в этом браузере.</p>
+        <div class="shop-empty" id="cart-empty"><p>В корзине пока нет товаров.</p><a class="button button--primary" href="catalog.html">Выбрать товары</a></div>
+        <div class="cart-layout" id="cart-content" hidden><ul class="cart-list" id="cart-items"></ul><aside class="cart-summary" aria-labelledby="cart-summary-title"><h2 id="cart-summary-title" class="cart-summary__title">Итого</h2><p id="cart-count"></p><p class="cart-summary__total" id="cart-total">0 ₽</p><button class="button button--primary" id="cart-checkout" type="button" data-product="Корзина" disabled>Оформить заявку</button><p class="cart-summary__hint">Учебная проверка данных. Реальных заказов, оплаты и доставки нет.</p></aside></div>
+      </section>
+    </div>
+    <div class="container"><p class="success-message" id="success-message" role="status" tabindex="-1" hidden></p></div>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer__inner"><p>Я × МИРЭА · 2026</p><p>Учебный проект · Фронтенд и бэкенд разработка</p></div>
+  </footer>
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title" aria-describedby="order-dialog-note">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+    <p class="order-dialog__note" id="order-dialog-note">Учебная форма. Данные проверяются в браузере и никуда не отправляются.</p>
+    <p class="order-dialog__selection" id="selected-product-label"></p>
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <input id="selected-product" name="selected-product" type="hidden">
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-name">Имя *</label>
+        <input class="order-form__input" id="order-name" name="name" type="text" minlength="2" maxlength="80" autocomplete="given-name" required autofocus>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-email">E-mail *</label>
+        <input class="order-form__input" id="order-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-phone">Телефон *</label>
+        <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" placeholder="+7 (900) 000-00-00" title="Формат: +7 (900) 000-00-00" aria-describedby="phone-hint" required>
+        <small class="order-form__hint" id="phone-hint">Формат: +7 (900) 000-00-00</small>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-date">Дата связи</label>
+        <input class="order-form__input" id="order-date" name="date" type="date">
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-topic">Тема заявки *</label>
+        <select class="order-form__select" id="order-topic" name="topic" required>
+          <option value="">Выберите тему</option>
+          <option value="product">Заказ товара</option>
+          <option value="question">Вопрос о товаре</option>
+          <option value="other">Другой вопрос</option>
+        </select>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-comment">Комментарий</label>
+        <textarea class="order-form__textarea" id="order-comment" name="comment" rows="3" maxlength="2000" placeholder="Укажите количество или задайте вопрос"></textarea>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__agreement" for="order-agreement">
+          <input class="order-form__checkbox" id="order-agreement" name="agreement" type="checkbox" required>
+          Я согласен на обработку данных в учебном примере *
+        </label>
+      </div>
+      <p class="order-form__error" id="form-error" role="alert" hidden></p>
+      <div class="order-form__actions">
+        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button--primary" type="submit">Отправить заявку</button>
+      </div>
+    </form>
+  </dialog>
+  <a class="button button--primary back-to-top" href="#page-top" aria-label="Вернуться к началу страницы">Наверх</a>
+  <p class="shop-notice" id="shop-notice" role="status" hidden></p>
+  <noscript><p class="container">Для корзины, сравнения, выбранной карточки товара, формы и фильтров включите JavaScript. Каталог, FAQ, контакты и ссылки доступны без него.</p></noscript>
+</body>
+</html>
