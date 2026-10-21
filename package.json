@@ -7,7 +7,10 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node tests/browser.cjs && node tests/shop.cjs"
+    "test": "node tests/browser.cjs && node tests/shop.cjs",
+    "version-assets": "node scripts/version-assets.cjs",
+    "pretest": "node scripts/version-assets.cjs --check",
+    "test:styles": "node scripts/version-assets.cjs --check && node tests/styles.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"
